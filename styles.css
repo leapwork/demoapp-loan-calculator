@@ -3,7 +3,7 @@
   --muted: #52706e;
   --line: #d8e6df;
   --paper: #ffffff;
-  --wash: #eef5f1;
+  --wash: #edf3f0;
   --navy: #052f2e;
   --teal: #2f7a67;
   --gold: #cfff3d;
@@ -33,45 +33,57 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
 .topbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 72px;
-  padding: 0 clamp(20px, 5vw, 72px);
-  background: rgba(255, 253, 244, 0.94);
-  border-bottom: 1px solid var(--line);
+  min-height: 76px;
+  padding: 0 20px;
+  background: linear-gradient(115deg, #052f2e 0%, #083634 42%, #0e403d 72%, #2b5a53 100%);
+  border-bottom: 0;
   position: sticky;
   top: 0;
   z-index: 10;
-  backdrop-filter: blur(12px);
+}
+
+.topbar-inner {
+  width: min(1240px, 100%);
+  min-height: inherit;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 18px;
-}
-
-.brand {
+  gap: 14px;
   min-width: max-content;
-  font-weight: 760;
-  color: var(--navy);
+  color: #ffffff;
 }
 
 .brand-mark {
+  display: block;
   width: 32px;
   height: 32px;
   border-radius: 7px;
   background:
-    linear-gradient(135deg, transparent 48%, rgba(255, 255, 255, 0.9) 49% 56%, transparent 57%),
-    linear-gradient(135deg, #052f2e 0%, #2f7a67 72%, #cfff3d 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+    linear-gradient(135deg, transparent 48%, rgba(5, 47, 46, 0.92) 49% 56%, transparent 57%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(234, 244, 239, 0.98) 72%, rgba(207, 255, 61, 0.95) 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+.brand-wordmark {
+  display: block;
+  font-size: 1.04rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
 }
 
 main {
@@ -79,24 +91,28 @@ main {
 }
 
 .hero {
-  min-height: 430px;
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-  align-items: center;
-  gap: clamp(24px, 5vw, 72px);
-  padding: 56px clamp(20px, 5vw, 72px) 86px;
+  min-height: 470px;
+  padding: 40px 20px 104px;
   color: #fff;
   background:
-    radial-gradient(circle at 18% -20%, transparent 0 130px, rgba(255, 255, 255, 0.08) 132px, transparent 134px),
-    radial-gradient(circle at 92% 82%, transparent 0 170px, rgba(255, 255, 255, 0.08) 172px, transparent 174px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px) 0 0 / 86px 86px,
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 0 / 86px 86px,
-    linear-gradient(115deg, #022f2d 0%, #0b3d3b 54%, #4e746e 100%);
-  background-size: auto;
+    radial-gradient(circle at 18% -18%, transparent 0 132px, rgba(255, 255, 255, 0.055) 134px, transparent 136px),
+    radial-gradient(circle at 89% 80%, transparent 0 174px, rgba(255, 255, 255, 0.05) 176px, transparent 178px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 0 / 96px 96px,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 96px 96px,
+    linear-gradient(115deg, #052f2e 0%, #083634 42%, #0e403d 72%, #2b5a53 100%);
+}
+
+.hero-inner {
+  width: min(1240px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 76px);
 }
 
 .hero-copy {
-  max-width: 780px;
+  max-width: 640px;
 }
 
 .eyebrow {
@@ -117,30 +133,30 @@ h2 {
 
 h1 {
   max-width: 760px;
-  font-size: clamp(2.45rem, 4vw, 4.2rem);
-  line-height: 1.02;
+  font-size: clamp(2.7rem, 4.15vw, 4.5rem);
+  line-height: 0.98;
 }
 
 .hero p:last-child {
-  max-width: 540px;
+  max-width: 520px;
   margin: 18px 0 0;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 1.02rem;
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1.62;
 }
 
 .hero-visual {
   position: relative;
-  width: min(100%, 500px);
-  aspect-ratio: 1.7;
+  width: min(100%, 520px);
+  aspect-ratio: 1.72;
   justify-self: end;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px) 0 0 / 72px 72px,
-    linear-gradient(180deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px) 0 0 / 72px 72px,
-    rgba(2, 34, 33, 0.42);
-  box-shadow: 0 24px 58px rgba(0, 0, 0, 0.22);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px) 0 0 / 78px 78px,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px) 0 0 / 78px 78px,
+    linear-gradient(135deg, rgba(2, 31, 30, 0.58) 0%, rgba(6, 45, 43, 0.34) 100%);
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.24);
   overflow: hidden;
 }
 
@@ -155,15 +171,15 @@ h1 {
 .hero-visual::before {
   width: 220px;
   height: 220px;
-  right: -70px;
-  top: -80px;
+  right: -68px;
+  top: -82px;
 }
 
 .hero-visual::after {
-  width: 260px;
-  height: 260px;
-  left: -95px;
-  bottom: -105px;
+  width: 248px;
+  height: 248px;
+  left: -92px;
+  bottom: -98px;
 }
 
 .hero-visual span {
@@ -171,25 +187,25 @@ h1 {
   display: block;
   height: 2px;
   border-radius: 999px;
-  background: rgba(207, 255, 61, 0.5);
+  background: rgba(207, 255, 61, 0.34);
 }
 
 .hero-visual span:nth-child(1) {
-  width: 42%;
-  left: 13%;
-  top: 34%;
+  width: 34%;
+  left: 14%;
+  top: 36%;
 }
 
 .hero-visual span:nth-child(2) {
-  width: 34%;
-  right: 15%;
-  top: 52%;
+  width: 28%;
+  right: 17%;
+  top: 55%;
 }
 
 .hero-visual span:nth-child(3) {
-  width: 24%;
-  left: 32%;
-  bottom: 28%;
+  width: 18%;
+  left: 34%;
+  bottom: 30%;
 }
 
 .workspace {
@@ -201,17 +217,17 @@ h1 {
 
 .product-start {
   width: min(1180px, calc(100% - 40px));
-  margin: -34px auto 0;
-  padding: clamp(22px, 4vw, 34px);
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  margin: -46px auto 0;
+  padding: clamp(24px, 4vw, 36px);
+  border: 1px solid rgba(5, 47, 46, 0.08);
+  border-radius: 12px;
   background: var(--paper);
-  box-shadow: var(--shadow);
+  box-shadow: 0 24px 56px rgba(5, 47, 46, 0.14);
 }
 
 .product-cards {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 
@@ -291,8 +307,12 @@ h1 {
 }
 
 .back-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   min-height: 38px;
-  padding: 0;
+  padding: 0 0 6px;
   background: transparent;
   color: var(--teal);
   border: 0;
@@ -302,10 +322,35 @@ h1 {
   text-transform: none;
 }
 
-.back-button:hover {
+.back-button::before {
+  content: "\2039";
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.back-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.back-button:hover,
+.back-button:focus-visible {
   color: var(--navy);
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  text-decoration: none;
+}
+
+.back-button:hover::after,
+.back-button:focus-visible::after {
+  opacity: 1;
 }
 
 .product-panel[hidden] {
@@ -377,11 +422,37 @@ h2 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.paired-fields {
-  grid-template-columns: 1fr 1fr;
+.auto-primary-fields {
+  grid-template-columns: 1fr;
 }
 
-.input-shell {
+.auto-primary-fields .field {
+  grid-template-columns: minmax(150px, 190px) minmax(0, 1fr);
+  align-items: center;
+  column-gap: 18px;
+}
+
+.auto-primary-fields .field > span {
+  grid-column: 1;
+}
+
+.auto-primary-fields .input-shell,
+.auto-primary-fields .select-shell,
+.auto-primary-fields .slider-wrap {
+  grid-column: 2;
+}
+
+.auto-primary-fields .slider-wrap {
+  width: 100%;
+  margin-top: -2px;
+}
+
+.field-span-3 {
+  grid-column: auto;
+}
+
+.input-shell,
+.select-shell {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -393,24 +464,93 @@ h2 {
   color: var(--muted);
 }
 
+.select-shell {
+  position: relative;
+  padding-right: 42px;
+}
+
+.select-shell::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 1.6px solid currentColor;
+  border-bottom: 1.6px solid currentColor;
+  transform: translateY(-60%) rotate(45deg);
+  pointer-events: none;
+}
+
 .input-shell > span {
   white-space: nowrap;
   flex: 0 0 auto;
 }
 
-.input-shell:focus-within {
+.input-shell:focus-within,
+.select-shell:focus-within {
   border-color: var(--teal);
   box-shadow: 0 0 0 4px rgba(47, 122, 103, 0.12);
 }
 
-.input-shell input {
+.input-shell input,
+.select-shell select {
   width: 100%;
   min-width: 0;
   border: 0;
   outline: 0;
   background: transparent;
   color: var(--ink);
-  font-weight: 680;
+  font-weight: 400;
+}
+
+.select-shell select {
+  appearance: none;
+  cursor: pointer;
+  padding: 0 14px 0 4px;
+}
+
+.slider-wrap {
+  display: grid;
+  gap: 8px;
+}
+
+.range-slider {
+  width: 100%;
+  margin: 6px 0 0;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(47, 122, 103, 0.2) 0%, rgba(47, 122, 103, 0.8) 100%);
+  outline: 0;
+}
+
+.range-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 4px 14px rgba(5, 47, 46, 0.18);
+  cursor: pointer;
+}
+
+.range-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 4px 14px rgba(5, 47, 46, 0.18);
+  cursor: pointer;
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.82rem;
 }
 
 .term-group {
@@ -474,10 +614,6 @@ h2 {
   background: #edf4df;
 }
 
-.auto-terms {
-  grid-template-columns: repeat(4, 1fr);
-}
-
 .segmented label {
   cursor: pointer;
 }
@@ -507,6 +643,10 @@ h2 {
   color: #8d332c;
   font-size: 0.92rem;
   font-weight: 650;
+}
+
+.notice-advisory {
+  color: #a26b00;
 }
 
 .results {
@@ -551,6 +691,7 @@ h2 {
 .payment-header {
   padding-bottom: 22px;
   border-bottom: 1px solid var(--line);
+  text-align: center;
 }
 
 .payment-header output {
@@ -563,7 +704,20 @@ h2 {
 }
 
 .payment-header span {
+  display: block;
   color: var(--muted);
+}
+
+.payment-title {
+  margin-bottom: 12px;
+}
+
+.apr-note {
+  margin: 14px auto 0;
+  max-width: 280px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .bar {
@@ -591,14 +745,6 @@ h2 {
   background: #6a8a2a;
 }
 
-#autoPrincipalBar {
-  background: var(--teal);
-}
-
-#autoInterestBar {
-  background: #9cc234;
-}
-
 .breakdown {
   display: grid;
   gap: 14px;
@@ -621,7 +767,19 @@ h2 {
 
 .breakdown dd {
   margin: 0;
-  font-weight: 760;
+  font-weight: 400;
+}
+
+.compact-breakdown {
+  margin-top: 24px;
+}
+
+.compact-breakdown dt {
+  font-size: 0.96rem;
+}
+
+.compact-breakdown dd {
+  font-size: 1rem;
 }
 
 .dot {
@@ -664,6 +822,43 @@ h2 {
   font-size: 1.12rem;
 }
 
+.total-summary {
+  margin: 22px 0 0;
+}
+
+.auto-summary-block {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.auto-summary-block .summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.auto-summary-block dt,
+.auto-summary-block dd {
+  font-size: 1rem;
+}
+
+.auto-summary-block dt {
+  color: #36485a;
+}
+
+.auto-summary-block dd {
+  margin: 0;
+  text-align: right;
+  color: #63718a;
+  font-weight: 400;
+}
+
+.auto-summary-block .summary-row-strong dd {
+  color: #4f5b78;
+  font-weight: 760;
+}
+
 button {
   min-height: 48px;
   border-radius: 7px;
@@ -702,15 +897,205 @@ button {
   line-height: 1.5;
 }
 
+.auto-workspace {
+  align-items: start;
+}
+
+.auto-calculator,
+.auto-results,
+.auto-action-card {
+  border-radius: 16px;
+}
+
+.auto-calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(32px, 4vw, 44px);
+}
+
+.auto-section-heading {
+  margin-bottom: 34px;
+}
+
+.auto-section-heading h2 {
+  color: #183f3e;
+  font-size: clamp(1.5rem, 2.05vw, 2.15rem);
+  line-height: 1.08;
+}
+
+.auto-section-heading .form-note {
+  max-width: 520px;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.auto-side {
+  display: grid;
+  gap: 22px;
+  grid-template-rows: auto auto;
+}
+
+.auto-results {
+  position: relative;
+  top: 0;
+}
+
+.auto-payment-panel {
+  margin-bottom: 28px;
+  padding: 30px 26px;
+  border-radius: 16px;
+  border-bottom: 0;
+  background: linear-gradient(135deg, #0f3d3b 0%, #275948 100%);
+  color: #ffffff;
+}
+
+.auto-payment-panel .payment-title,
+.auto-payment-panel output,
+.auto-payment-panel span,
+.auto-payment-panel .apr-note {
+  color: inherit;
+}
+
+.auto-payment-panel .payment-title {
+  margin-bottom: 10px;
+  font-size: 0.98rem;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 1;
+}
+
+.auto-payment-panel output {
+  font-size: clamp(3rem, 6vw, 4.6rem);
+}
+
+.auto-payment-panel span {
+  margin-top: 8px;
+  font-size: 1rem;
+  opacity: 0.88;
+}
+
+.auto-payment-panel .apr-note {
+  max-width: none;
+  font-size: 1rem;
+  opacity: 0.82;
+}
+
+.vehicle-price-row {
+  row-gap: 14px;
+  align-items: start;
+}
+
+.vehicle-slider-wrap {
+  grid-column: 1 / -1;
+  width: 100%;
+  padding-top: 10px;
+}
+
+.range-slider {
+  height: 10px;
+  background: linear-gradient(90deg, #2f7a67 0%, #2f7a67 var(--slider-progress, 0%), rgba(47, 122, 103, 0.18) var(--slider-progress, 0%), rgba(47, 122, 103, 0.18) 100%);
+}
+
+.range-slider::-webkit-slider-thumb {
+  width: 28px;
+  height: 28px;
+  border-width: 4px;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px #2f7a67;
+}
+
+.range-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-width: 4px;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px #2f7a67;
+}
+
+.range-labels {
+  font-size: 0.95rem;
+}
+
+.auto-breakdown {
+  gap: 16px;
+}
+
+.auto-breakdown dt,
+.auto-breakdown dd {
+  font-size: 1rem;
+}
+
+.auto-breakdown dd {
+  color: #63718a;
+}
+
+.auto-action-card {
+  padding: 34px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.auto-action-card h3 {
+  margin: 0 0 10px;
+  color: #183f3e;
+  font-size: clamp(1.08rem, 1.18vw, 1.25rem);
+  line-height: 1.2;
+}
+
+.auto-action-card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.auto-apply-button {
+  min-height: 58px;
+  font-size: 1.02rem;
+  background: #2f7a67;
+  text-transform: uppercase;
+}
+
+.auto-apply-button:hover {
+  background: #275948;
+}
+
+.auto-fine-print {
+  margin-top: 16px;
+}
+@media (min-width: 851px) {
+  .auto-workspace {
+    align-items: stretch;
+  }
+
+  .auto-side {
+    align-self: stretch;
+  }
+
+  .auto-calculator {
+    height: 100%;
+  }
+
+  .auto-action-card {
+    min-height: 240px;
+  }
+}
 @media (max-width: 850px) {
   .hero,
-  .workspace {
+  .workspace,
+  .auto-workspace {
     grid-template-columns: 1fr;
   }
 
   .hero {
-    min-height: 420px;
-    align-items: end;
+    min-height: 430px;
+    padding-bottom: 92px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
   }
 
   .hero-visual,
@@ -737,18 +1122,45 @@ button {
     grid-template-columns: 44px minmax(0, 1fr);
   }
 
+  .auto-calculator,
+  .auto-results,
+  .auto-action-card {
+    border-radius: 12px;
+  }
+
   .calculator-toolbar {
     align-items: stretch;
     flex-direction: column;
   }
 
   .primary-fields,
-  .paired-fields {
+  .mortgage-primary-fields,
+  .auto-primary-fields {
     grid-template-columns: 1fr;
   }
 
-  .segmented,
-  .auto-terms {
+  .mortgage-primary-fields .field,
+  .auto-primary-fields .field {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+
+  .mortgage-primary-fields .field > span,
+  .mortgage-primary-fields .input-shell,
+  .mortgage-primary-fields .select-shell,
+  .mortgage-primary-fields .field-help,
+  .auto-primary-fields .input-shell,
+  .auto-primary-fields .select-shell,
+  .auto-primary-fields .slider-wrap,
+  .auto-primary-fields .field > span {
+    grid-column: auto;
+  }
+
+  .field-span-3 {
+    grid-column: auto;
+  }
+
+  .segmented {
     grid-template-columns: 1fr;
   }
 
@@ -757,3 +1169,187 @@ button {
     align-items: start;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mortgage-primary-fields {
+  grid-template-columns: 1fr;
+}
+
+.mortgage-primary-fields .field {
+  grid-template-columns: minmax(170px, 220px) minmax(0, 1fr);
+  align-items: center;
+  column-gap: 18px;
+}
+
+.mortgage-primary-fields .field > span {
+  grid-column: 1;
+}
+
+.mortgage-primary-fields .input-shell,
+.mortgage-primary-fields .select-shell,
+.mortgage-primary-fields .field-help {
+  grid-column: 2;
+}
+
+.readonly-shell {
+  background: #f6faf8;
+}
+
+@media (max-width: 620px) {
+  .mortgage-primary-fields .field {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+
+  .mortgage-primary-fields .field > span,
+  .mortgage-primary-fields .input-shell,
+  .mortgage-primary-fields .select-shell,
+  .mortgage-primary-fields .field-help {
+    grid-column: auto;
+  }
+}
+
+
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(5, 47, 46, 0.48);
+  backdrop-filter: blur(8px);
+}
+
+.modal-card {
+  position: relative;
+  width: min(100%, 520px);
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 28px 70px rgba(5, 47, 46, 0.22);
+}
+
+.modal-eyebrow {
+  margin-bottom: 10px;
+}
+
+.modal-card h2 {
+  font-size: clamp(1.6rem, 2vw, 2rem);
+}
+
+.modal-copy {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  min-height: 36px;
+  width: 36px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.modal-action {
+  margin-top: 24px;
+}
+
+.mortgage-workspace {
+  align-items: start;
+}
+
+.mortgage-calculator,
+.mortgage-results {
+  border-radius: 16px;
+}
+
+.mortgage-calculator {
+  padding: clamp(32px, 4vw, 40px);
+}
+
+.mortgage-results {
+  position: relative;
+  top: 0;
+}
+
+.mortgage-payment-panel {
+  margin-bottom: 28px;
+  padding: 30px 26px;
+  border-radius: 16px;
+  border-bottom: 0;
+  background: linear-gradient(135deg, #0f3d3b 0%, #275948 100%);
+  color: #ffffff;
+}
+
+.mortgage-payment-panel .payment-title,
+.mortgage-payment-panel output,
+.mortgage-payment-panel span,
+.mortgage-payment-panel .apr-note {
+  color: inherit;
+}
+
+.mortgage-payment-panel .payment-title {
+  margin-bottom: 10px;
+  font-size: 0.98rem;
+  letter-spacing: 0;
+  text-transform: none;
+  opacity: 1;
+}
+
+.mortgage-payment-panel output {
+  font-size: clamp(3rem, 6vw, 4.6rem);
+}
+
+.mortgage-payment-panel span {
+  margin-top: 8px;
+  font-size: 1rem;
+  opacity: 0.88;
+}
+
+.mortgage-payment-panel .apr-note {
+  max-width: none;
+  font-size: 1rem;
+  opacity: 0.82;
+}
+
+@media (max-width: 620px) {
+  .mortgage-calculator,
+  .mortgage-results {
+    border-radius: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

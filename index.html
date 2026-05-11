@@ -12,25 +12,29 @@
   </head>
   <body>
     <header class="topbar">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>LeapTrust Bank</span>
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-wordmark">Leaptrust Bank</span>
+        </div>
       </div>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="page-title">
-        <div class="hero-copy">
-          <h1 id="page-title">See what your next loan could cost.</h1>
-          <p>
-            Estimate home and auto payments in minutes, compare the monthly
-            impact, and apply when you are ready.
-          </p>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <h1 id="page-title">Plan the next move with confidence.</h1>
+            <p>
+              Estimate home and auto payments in minutes, compare the monthly
+              impact, and apply when you are ready.
+            </p>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </section>
 
@@ -40,6 +44,21 @@
         </div>
 
         <div class="product-cards">
+          <button class="product-card" type="button" data-product-card="auto">
+            <span class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M6.5 17.5h11" />
+                <path d="M5 17.5H3.8c-.5 0-.8-.3-.8-.8v-3.2c0-.4.2-.7.6-.8l2.2-.8 2.1-4.1c.3-.5.7-.8 1.3-.8h5.6c.6 0 1 .3 1.3.8l2.1 4.1 2.2.8c.4.1.6.4.6.8v3.2c0 .5-.3.8-.8.8H19" />
+                <path d="M7.2 11.9h9.6" />
+                <path d="M7 17.5a2 2 0 1 0 4 0 2 2 0 0 0-4 0" />
+                <path d="M15 17.5a2 2 0 1 0 4 0 2 2 0 0 0-4 0" />
+              </svg>
+            </span>
+            <span>
+              <strong>Car loan</strong>
+              <small>Estimate an auto payment with vehicle price, trade-in, credit score, and term.</small>
+            </span>
+          </button>
           <button class="product-card" type="button" data-product-card="mortgage">
             <span class="card-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false">
@@ -53,21 +72,6 @@
               <small>Estimate a monthly house payment with principal, interest, tax, and insurance.</small>
             </span>
           </button>
-          <button class="product-card" type="button" data-product-card="auto">
-            <span class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" focusable="false">
-                <path d="M6.5 17.5h11" />
-                <path d="M5 17.5H3.8c-.5 0-.8-.3-.8-.8v-3.2c0-.4.2-.7.6-.8l2.2-.8 2.1-4.1c.3-.5.7-.8 1.3-.8h5.6c.6 0 1 .3 1.3.8l2.1 4.1 2.2.8c.4.1.6.4.6.8v3.2c0 .5-.3.8-.8.8H19" />
-                <path d="M7.2 11.9h9.6" />
-                <path d="M7 17.5a2 2 0 1 0 4 0 2 2 0 0 0-4 0" />
-                <path d="M15 17.5a2 2 0 1 0 4 0 2 2 0 0 0-4 0" />
-              </svg>
-            </span>
-            <span>
-              <strong>Car loan</strong>
-              <small>Estimate an auto payment with vehicle price, taxes, fees, and term.</small>
-            </span>
-          </button>
         </div>
       </section>
 
@@ -76,14 +80,14 @@
           <button class="back-button" type="button" id="backToProducts">Back to products</button>
         </div>
 
-        <div class="workspace product-panel is-active" id="mortgage-panel">
-          <form class="calculator" aria-label="Mortgage calculator inputs">
+        <div class="workspace product-panel mortgage-workspace is-active" id="mortgage-panel">
+          <form class="calculator mortgage-calculator" aria-label="Mortgage calculator inputs">
             <div class="section-heading">
               <h2>Tell us about the home</h2>
-              <p class="form-note">Start with three details. You can fine-tune taxes, insurance, and term if you want.</p>
+              <p class="form-note">Start with the basics. Your estimated rate updates automatically based on your credit profile and down payment.</p>
             </div>
 
-            <div class="primary-fields">
+            <div class="primary-fields mortgage-primary-fields">
               <label class="field">
                 <span>Home price</span>
                 <div class="input-shell">
@@ -100,12 +104,17 @@
                 <small class="field-help" id="mortgageDownPaymentHelp" hidden></small>
               </label>
               <label class="field">
-                <span>Interest rate</span>
-                <div class="input-shell">
-                  <input id="interestRate" type="number" min="0.1" max="20" step="0.01" value="6.75" inputmode="decimal" required />
-                  <span aria-hidden="true">%</span>
+                <span>Credit score</span>
+                <div class="select-shell">
+                  <select id="mortgageCreditScore">
+                    <option value="excellent" selected>Excellent (740+)</option>
+                    <option value="good">Good (700-739)</option>
+                    <option value="average">Average (660-699)</option>
+                    <option value="belowAverage">Below Average (620-659)</option>
+                  </select>
                 </div>
               </label>
+              <input id="interestRate" type="hidden" value="6.25%" />
             </div>
 
             <details class="advanced-options">
@@ -150,15 +159,16 @@
               </div>
             </details>
 
-            <div class="notice" id="downNotice" role="status" aria-live="polite"></div>
+            <div class="notice notice-advisory" id="downNotice" role="status" aria-live="polite"></div>
           </form>
 
-          <aside class="results is-disabled" id="mortgageResults" aria-label="Estimated monthly mortgage payment">
+          <aside class="results mortgage-results is-disabled" id="mortgageResults" aria-label="Estimated monthly mortgage payment">
             <p class="estimate-note" id="mortgageEstimateNote">Enter the home details to see your estimate.</p>
-            <div class="payment-header">
-              <p class="eyebrow">Estimated payment</p>
+            <div class="payment-header mortgage-payment-panel">
+              <p class="eyebrow payment-title">Your Monthly Payment</p>
               <output id="monthlyPayment" for="homePrice downPayment interestRate propertyTax insurance">$0</output>
               <span>per month</span>
+              <p class="apr-note" id="mortgageRateNote">6.25% interest rate based on your details</p>
             </div>
 
             <div class="bar" aria-hidden="true">
@@ -202,134 +212,153 @@
           </aside>
         </div>
 
-        <div class="workspace product-panel" id="auto-panel" hidden>
-          <form class="calculator" aria-label="Car loan calculator inputs">
-            <div class="section-heading">
-              <h2>Tell us about the vehicle</h2>
-              <p class="form-note">Start with three details. Fees and term are available under advanced options.</p>
+        <div class="workspace product-panel auto-workspace" id="auto-panel" hidden>
+          <form class="calculator auto-calculator" aria-label="Car loan calculator inputs">
+            <div class="section-heading auto-section-heading">
+              <h2>Car Payment Calculator</h2>
+              <p class="form-note">Find out how much you need to budget for the car you want before you apply.</p>
             </div>
 
-            <div class="primary-fields">
-              <label class="field">
+            <div class="primary-fields auto-primary-fields">
+              <label class="field field-span-3 vehicle-price-row">
                 <span>Vehicle price</span>
                 <div class="input-shell">
                   <span aria-hidden="true">$</span>
-                  <input id="vehiclePrice" type="number" min="7500" step="500" placeholder="36,500" inputmode="numeric" required />
+                  <input id="vehiclePrice" type="number" min="1" max="80000" step="500" value="20000" inputmode="numeric" required />
+                </div>
+                <div class="slider-wrap vehicle-slider-wrap">
+                  <input id="vehiclePriceSlider" class="range-slider" type="range" min="0" max="80000" step="500" value="20000" aria-label="Vehicle price slider" />
+                  <div class="range-labels" aria-hidden="true">
+                    <span>$0</span>
+                    <span>$80,000</span>
+                  </div>
                 </div>
               </label>
               <label class="field">
                 <span>Down payment</span>
                 <div class="input-shell">
                   <span aria-hidden="true">$</span>
-                  <input id="autoDownPayment" type="number" min="0" step="500" placeholder="5,500" inputmode="numeric" required />
+                  <input id="autoDownPayment" type="number" min="0" step="500" value="1000" inputmode="numeric" required />
                 </div>
               </label>
               <label class="field">
-                <span>Interest rate</span>
+                <span>Trade-in value</span>
                 <div class="input-shell">
-                  <input id="autoInterestRate" type="number" min="0.1" max="30" step="0.01" value="7.49" inputmode="decimal" required />
-                  <span aria-hidden="true">%</span>
+                  <span aria-hidden="true">$</span>
+                  <input id="tradeInValue" type="number" min="0" step="500" value="0" inputmode="numeric" />
+                </div>
+              </label>
+              <label class="field">
+                <span>Credit score</span>
+                <div class="select-shell">
+                  <select id="creditScore">
+                    <option value="6.85" selected>Excellent (720-850)</option>
+                    <option value="9.09">Good (660-719)</option>
+                    <option value="12.38">Average (600-659)</option>
+                    <option value="16.46">Below Average (300-599)</option>
+                  </select>
+                </div>
+              </label>
+              <label class="field">
+                <span>Loan term</span>
+                <div class="select-shell">
+                  <select id="autoTerm">
+                    <option value="72" selected>72 months</option>
+                    <option value="60">60 months</option>
+                    <option value="48">48 months</option>
+                    <option value="36">36 months</option>
+                  </select>
                 </div>
               </label>
             </div>
-
-            <details class="advanced-options">
-              <summary>Advanced options</summary>
-              <div class="advanced-grid">
-                <fieldset class="term-group">
-                  <legend>Loan term</legend>
-                  <div class="segmented auto-terms" role="radiogroup" aria-label="Car loan term">
-                    <label>
-                      <input type="radio" name="autoTerm" value="36" />
-                      <span>36 mo.</span>
-                    </label>
-                    <label>
-                      <input type="radio" name="autoTerm" value="48" />
-                      <span>48 mo.</span>
-                    </label>
-                    <label>
-                      <input type="radio" name="autoTerm" value="60" checked />
-                      <span>60 mo.</span>
-                    </label>
-                    <label>
-                      <input type="radio" name="autoTerm" value="72" />
-                      <span>72 mo.</span>
-                    </label>
-                  </div>
-                </fieldset>
-
-                <div class="paired-fields">
-                  <label class="field">
-                    <span>Sales tax</span>
-                    <div class="input-shell">
-                      <input id="salesTax" type="number" min="0" max="15" step="0.1" value="6.5" inputmode="decimal" />
-                      <span aria-hidden="true">%</span>
-                    </div>
-                  </label>
-                  <label class="field">
-                    <span>Fees to finance</span>
-                    <div class="input-shell">
-                      <span aria-hidden="true">$</span>
-                      <input id="autoFees" type="number" min="0" step="50" value="650" inputmode="numeric" />
-                    </div>
-                  </label>
-                </div>
-              </div>
-            </details>
 
             <div class="notice" id="autoNotice" role="status" aria-live="polite"></div>
           </form>
 
-          <aside class="results is-disabled" id="autoResults" aria-label="Estimated monthly car payment">
-            <p class="estimate-note" id="autoEstimateNote">Enter the vehicle details to see your estimate.</p>
-            <div class="payment-header">
-              <p class="eyebrow">Estimated payment</p>
-              <output id="autoMonthlyPayment" for="vehiclePrice autoDownPayment autoInterestRate salesTax autoFees">$0</output>
-              <span>per month</span>
-            </div>
-
-            <div class="bar auto-bar" aria-hidden="true">
-              <span id="autoPrincipalBar"></span>
-              <span id="autoInterestBar"></span>
-            </div>
-
-            <dl class="breakdown">
-              <div>
-                <dt><span class="dot principal"></span>Amount financed</dt>
-                <dd id="autoAmountFinanced">$0</dd>
+          <div class="auto-side">
+            <aside class="results auto-results is-disabled" id="autoResults" aria-label="Estimated monthly car payment">
+              <p class="estimate-note" id="autoEstimateNote">Enter the vehicle details to see your estimate.</p>
+              <div class="payment-header auto-payment-panel">
+                <p class="eyebrow payment-title">Your Monthly Payment</p>
+                <output id="autoMonthlyPayment" for="vehiclePrice vehiclePriceSlider autoDownPayment tradeInValue creditScore autoTerm">$0</output>
+                <span>per month</span>
+                <p class="apr-note" id="autoApr">0.00% APR (Estimate based on your credit rating)*</p>
               </div>
-              <div>
-                <dt><span class="dot tax"></span>Total interest</dt>
-                <dd id="autoTotalInterest">$0</dd>
-              </div>
-              <div>
-                <dt><span class="dot insurance"></span>Taxes & fees</dt>
-                <dd id="autoTaxesFees">$0</dd>
-              </div>
-            </dl>
 
-            <div class="loan-facts">
-              <div>
-                <span>Total of payments</span>
-                <strong id="autoTotalPaid">$0</strong>
-              </div>
-              <div>
-                <span>Down payment</span>
-                <strong id="autoDownPercent">0%</strong>
-              </div>
-            </div>
+              <dl class="breakdown compact-breakdown auto-breakdown">
+                <div>
+                  <dt>Vehicle Budget</dt>
+                  <dd id="autoVehicleBudget">$0</dd>
+                </div>
+                <div>
+                  <dt>Down Payment</dt>
+                  <dd id="autoDisplayDownPayment">$0</dd>
+                </div>
+                <div>
+                  <dt>Trade-In Value</dt>
+                  <dd id="autoTradeInValue">$0</dd>
+                </div>
+                <div>
+                  <dt>Est. Tax, Title & Registration</dt>
+                  <dd id="autoTaxTitle">$0</dd>
+                </div>
+              </dl>
 
-            <button type="button" class="apply-now" id="autoApply" disabled>Apply now</button>
+              <dl class="breakdown compact-breakdown auto-breakdown auto-summary-block">
+                <div class="summary-row">
+                  <dt>Total Amount</dt>
+                  <dd id="autoTotalAmount">$0</dd>
+                </div>
+                <div class="summary-row summary-row-strong">
+                  <dt>Your Monthly Payment</dt>
+                  <dd id="autoMonthlyPaymentSummary">$0</dd>
+                </div>
+              </dl>
+            </aside>
 
-            <p class="fine-print">
-              This demo estimate is for illustration only and does not include dealer add-ons,
-              insurance premiums, rebates, or state-specific title costs.
-            </p>
-          </aside>
+            <section class="auto-action-card" aria-label="Next step for car financing">
+              <h3>Ready to see your personal rates?</h3>
+              <p>Get a view of your options and lock in rates for up to 30 days.</p>
+              <button type="button" class="apply-now auto-apply-button" id="autoApply" disabled>Prequalify</button>
+            </section>
+          </div>
         </div>
       </section>
     </main>
 
+
+    <div class="modal-backdrop" id="prequalifyModal" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="prequalifyTitle">
+        <button class="modal-close" type="button" id="closePrequalifyModal" aria-label="Close">x</button>
+        <h2 id="prequalifyTitle">Your request has been received</h2>
+        <p class="modal-copy" id="prequalifyMessage">
+          A lending specialist will review your request and follow up with a proposal based on your selected loan details.
+        </p>
+        <button class="apply-now modal-action" type="button" id="confirmPrequalifyModal">Close</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
